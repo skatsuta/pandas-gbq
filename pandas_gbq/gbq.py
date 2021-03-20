@@ -961,7 +961,7 @@ def to_gbq(
 
     This method uses the Google Cloud client library to make requests to
     Google BigQuery, documented `here
-    <https://google-cloud-python.readthedocs.io/en/latest/bigquery/usage.html>`__.
+    <https://googleapis.dev/python/bigquery/latest/index.html>`__.
 
     See the :ref:`How to authenticate with Google BigQuery <authentication>`
     guide for authentication instructions.
