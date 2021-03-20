@@ -55,19 +55,19 @@ def load_chunks(
     schema=None,
     location=None,
 ):
-    job_config = bigquery.LoadJobConfig()
-    job_config.write_disposition = "WRITE_APPEND"
-    job_config.source_format = "CSV"
-    job_config.allow_quoted_newlines = True
-
     if schema is None:
         schema = pandas_gbq.schema.generate_bq_schema(dataframe)
-
     schema = pandas_gbq.schema.add_default_nullable_mode(schema)
 
-    job_config.schema = [
+    fields = [
         bigquery.SchemaField.from_api_repr(field) for field in schema["fields"]
     ]
+    job_config = bigquery.LoadJobConfig(
+        allow_quoted_newlines=True,
+        schema=fields,
+        source_format=bigquery.SourceFormat.CSV,
+        write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
+    )
 
     chunks = encode_chunks(dataframe, chunksize=chunksize)
     for remaining_rows, chunk_buffer in chunks:
