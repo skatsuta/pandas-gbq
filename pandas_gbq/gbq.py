@@ -1016,7 +1016,7 @@ def to_gbq(
           for a description of the schema inference.
 
         See `BigQuery API documentation on valid column names
-        <https://cloud.google.com/bigquery/docs/schemas#column_names`>__.
+        <https://cloud.google.com/bigquery/docs/schemas#column_names>`__.
 
         .. versionadded:: 0.3.1
     location : str, optional
